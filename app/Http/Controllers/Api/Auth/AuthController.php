@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -91,9 +92,10 @@ class AuthController extends Controller
      */
     public function me()
     {
+        /** @var User */
         $user = auth()->user();
 
-        return response()->json($user);
+        return response()->json($user->load('merchant'));
     }
 
     /**
