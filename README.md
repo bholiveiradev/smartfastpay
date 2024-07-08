@@ -108,7 +108,7 @@ http://localhost/api/doc
 
 2. Download the Swagger JSON file:
 
-The generated Swagger file will be located at storage/api-docs/api-docs.json.
+The generated Swagger file will be located at `storage/api-docs/api-docs.json`.
 
 3. Import into Insomnia from the Swagger JSON file:
 
