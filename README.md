@@ -30,7 +30,8 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - Docker
 - Docker Compose
 - Composer
-- Node.js with NPM
+- Node.js
+- NPM (or Yarn)
 
 ### Installation
 
