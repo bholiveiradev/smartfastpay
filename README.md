@@ -76,6 +76,11 @@ Run migrations and seed the database:
 ./vendor/bin/sail artisan migrate --seed
 ```
 
+This command will create the necessary database tables and seed the database with the following records:
+
+Payment methods: `pix`, `boleto`, and `bank_transfer`.
+Test user: `test@example.com` with password `password`.
+
 ## Testing
 
 To run the tests using Pest:
