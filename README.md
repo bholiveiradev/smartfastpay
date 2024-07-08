@@ -9,10 +9,13 @@
 
 ## SmartFastPay Payment API Laravel
 
+### Overview
+
 This is a Payment API built with Laravel for the SmartFastPay application for the PHP developer position. It includes features such as authentication with JWT, payment processing using the Strategy pattern, Swagger documentation, and testing with Pest. The project is set up to run with Docker using Laravel Sail and uses Laravel Octane with Swoole for improved performance.
 
 ### Table of Contents
 
+[Requirements](#requirements)<br />
 [Installation](#installation)<br />
 [Configuration](#configuration)<br />
 [Running the API](#running-the-api)<br />
@@ -21,6 +24,13 @@ This is a Payment API built with Laravel for the SmartFastPay application for th
 [Importing Insomnia Collection](#importing-insomnia-collection)
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+### Requirements
+- PHP >= 8.2
+- Docker
+- Docker Compose
+- Composer
+- Node.js with NPM
 
 ### Installation
 
