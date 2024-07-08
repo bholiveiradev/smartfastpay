@@ -130,7 +130,7 @@ The generated Swagger file will be located at `storage/api-docs/api-docs.json`.
 
 - Open Insomnia.
 - Go to Create > Import > Select `+ File`.
-- Drag and drop or choose the `swagger.json` or `insomnia-collection.json` file and Scan.
+- Drag and drop or choose the `api-docs.json` or `insomnia-collection.json` file and Scan.
 
 You should now see all the endpoints and be able to interact with them using Insomnia.
 
