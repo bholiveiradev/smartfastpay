@@ -53,7 +53,7 @@ class PaymentController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $payments = $this->payment->all();
+        $payments = $this->payment->orderBy('created_at', 'desc')->get();
         return PaymentResource::collection($payments);
     }
 
