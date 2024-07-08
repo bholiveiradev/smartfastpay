@@ -7,60 +7,114 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## SmartFastPay Payment API Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a Payment API built with Laravel for the SmartFastPay application for the PHP developer position. It includes features such as authentication with JWT, payment processing using the Strategy pattern, Swagger documentation, and testing with Pest. The project is set up to run with Docker using Laravel Sail and uses Laravel Octane with Swoole for improved performance.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Table of Contents
+
+[Installation](#installation)<br />
+[Configuration](#configuration)<br />
+[Running the API](#running-the-api)<br />
+[Testing](#testing)<br />
+[Swagger Documentation](#swagger-documentation)<br />
+[Importing Insomnia Collection](#importing-insomnia-collection)
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone the repository:
+```sh
+git clone git@github.com:bholiveiradev/smartfastpay.git
+cd smartfastpay
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Install the dependencies:
+```sh
+composer install
+npm install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Copy and past the `.env` file:
+```sh
+cp .env.example .env
+```
 
-## Laravel Sponsors
+### Configuration
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Update the `.env` file with your database, auth guard, JWT, l5-swagger and Octane settings:
 
-### Premium Partners
+```sh
+#DB_CONNECTION=sqlite
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+OCTANE_SERVER=swoole
 
-## Contributing
+JWT_SECRET=Xa6gkGZCwsBsgNslON9AbeMcS3xfwQ2z4j54Cl0RNWsvZxJVG1i3lR2qsooZdtsg
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+AUTH_GUARD=api
 
-## Code of Conduct
+L5_SWAGGER_GENERATE_ALWAYS=true
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Running the API
+Set up Docker and Laravel Sail:
 
-## Security Vulnerabilities
+```sh
+./vendor/bin/sail up -d
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Run migrations and seed the database:
 
-## License
+```sh
+./vendor/bin/sail artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Testing
+
+To run the tests using Pest:
+
+```sh
+./vendor/bin/sail pest
+```
+
+## Swagger Documentation
+
+Runing the swagger documentation:
+
+```sh
+./vendor/bin/sail artisan l5-swagger:generate
+```
+
+The API documentation is generated with Swagger. To access the Swagger UI, visit:
+
+```sh
+http://localhost/api/doc
+```
+
+## Importing Insomnia Collection
+
+1. Export the Swagger JSON:
+
+```sh
+./vendor/bin/sail artisan l5-swagger:generate
+```
+
+2. Download the Swagger JSON file:
+
+The generated Swagger file will be located at storage/api-docs/api-docs.json.
+
+3. Import into Insomnia from the Swagger JSON file:
+
+- Open Insomnia.
+- Go to Create > Import > Select `+ File`.
+- Drag and drop or choose the `swagger.json` or `insomnia-collection.json` file and Scan.
+
+You should now see all the endpoints and be able to interact with them using Insomnia.
+
